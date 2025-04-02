@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            width: 210mm; /* A4 width */
+            height: 297mm; /* A4 height */
+            margin: auto;
+            padding: 20mm;
+            background-color: white;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px; /* Adds spacing below the logo */
+        }
+
+        .header-logo {
+            max-width: 105%;
+            height: auto;
+            display: block;
+            margin: 0;
+        }
+            /*
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px;
+            font-weight: bold;
+            background-color: #f0fdf4;
+        }
+            */
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .right-align {
+            text-align: right;
+            margin-top: 50px;
+        }
+        .left-align {
+         text-align: right;
+         margin-top: 30px;
+        }
+        p {
+            margin-top: 20px; /* Adds spacing between paragraphs */
+        }
+        .footer {
+        text-align: center;
+        margin-top: 110px; /* Push the footer downward */
+         }
+        .justified-text {
+        text-align: justify;
+        width: 100%;
+        display: block;
+        }
+         .underline-input {
+        border: none;
+        border-bottom: 3px solid rgb(251, 250, 250);
+        outline: none;
+        width: 150px; /* Adjust width as needed */
+        text-align: center;
+        display: inline-block;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <img src="form.png" alt="DENR Logo" class="header-logo">
+    </div>
+    <!--
+    <div class="header">
+        <label><input type="radio" name="forestOption"> </label>
+        <label><input type="radio" name="forestOption"> </label>
+        <label><input type="radio" name="forestOption"> </label>
+    </div>
+    -->
+    <h2 style="text-align: left;">TO ALL CONCERNED:</h2>
+
+    <p>
+        <div style="text-align: justify;">
+            &emsp;&emsp;Be informed that the undersigned personnel of CENRO __________________________  
+            is tasked to monitor the tree cutting operation of __________________________,  
+            ______________________________ as inscribed in the approved  
+            <strong>Tree Cutting Permit No.</strong> __________________.  
+        </div>
+        
+        
+    </p>
+    
+    <section>
+        <p>
+            &emsp;&emsp;The undersigned certifies that he/she monitored the compliance of the above-mentioned permittee to the terms and conditions specified in his/her permit as follows:
+        </p>
+    </section>
+
+        <table>
+            <thead>
+                <tr>
+                    <td><span style="font-weight: bold; font-style: italic;">Please check the box that corresponds to your answer.</span></td>
+                    <th>Yes</th>
+                    <th>No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. Does the tree cut correspond to that allowed under the Tree Cutting Permit (TCP)?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+                <tr>
+                    <td>2. Was a placard or signboard installed in the area to inform the public that the tree cutting operation is authorized by DENR?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+                <tr>
+                    <td>3. Was the cutting operation under the supervision of the concerned office or its duly authorized representative who is a registered forester?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+            </tr>
+            <tr>
+                    <td>4. Was tha chainsaw used in the tree cutting duly registered?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+            </tr>
+            <tr>
+                <tr>
+                    <td>5. Was the implementation made in the presence of the above-mentioned representative?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+                <tr>
+                    <tr>
+                        <td><span style="font-weight: bold; font-style: italic;">Answer the succeeding questions, if applicable:</span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                <tr>
+                    <td>6. Were fees and other charges imposed by existing laws, rules, and regulations paid?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+                <tr>
+                    <td>7. In case the wood materials shall be transported, was a transport document issued?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+                <tr>
+                    <td>8. Did the permittee undertake measures during and after tree cutting operations to mitigate the negative impacts of the said activity to the locality?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+                <tr>
+                    <td>9. Is the tree cutting operation covered with a terminal report?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+                <tr>
+                    <td>10. Is the tree replacement compliant with DENR Memorandum Order No. 2012-02?</td>
+                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
+                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="right-align">
+        <p><strong>NAME AND SIGNATURE OF DENR PERSONNEL</strong></p>
+    </div>
+    <div class="left-align"></div>
+        <p><strong> &emsp;&emsp;SUBSCRIBED AND SWORN</strong> to before me this ______ day of  _______________________________.</p>
+    </div>
+    
+    <p>at ______________________________________.</p>
+    
+    <div class="right-align">
+        <p>(Authorized Person to Administer Oath)</p>
+    </div>
+
+    <div class="footer">
+        #14 Dalan na Pagayaya cor. Angicacua, Regional Government Center<br>
+        Carig Sur, Tuguegarao City, Cagayan, 3500<br>
+        Regional Hotline: 09565774996<br>
+        <a href="http://www.r2.denr.gov.ph">www.r2.denr.gov.ph</a>; E-mail: <a href="mailto:r2@denr.gov.ph">r2@denr.gov.ph</a>
+    </div>
+    
+    
+
+    <script src="script.js"></script>
+
+</body>
+</html>
