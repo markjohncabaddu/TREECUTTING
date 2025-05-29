@@ -6,87 +6,84 @@
     <title>Checklist</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @page {
-            size: A4;
-            margin: 20mm;
-        }
+       @page {
+    size: A4;
+    margin: 20mm;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            width: 210mm; /* A4 width */
-            height: 297mm; /* A4 height */
-            margin: auto;
-            padding: 20mm;
-            background-color: white;
-        }
+body {
+    font-family: Arial, sans-serif;
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    margin: auto;
+    padding: 20mm;
+    background-color: white;
+}
 
-        .logo-container {
-            text-align: center;
-            margin-bottom: 20px; /* Adds spacing below the logo */
-        }
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .header-logo {
-            max-width: 105%;
-            height: auto;
-            display: block;
-            margin: 0;
-        }
-            /*
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 15px;
-            font-weight: bold;
-            background-color: #f0fdf4;
-        }
-            */
-        h2 {
-            text-align: center;
-        }
+.header-logo {
+    max-width: 105%;
+    height: auto;
+    display: block;
+    margin: 0;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+h2 {
+    text-align: center;
+}
 
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-        .right-align {
-            text-align: right;
-            margin-top: 50px;
-        }
-        .left-align {
-         text-align: right;
-         margin-top: 30px;
-        }
-        p {
-            margin-top: 20px; /* Adds spacing between paragraphs */
-        }
-        .footer {
-        text-align: center;
-        margin-top: 110px; /* Push the footer downward */
-         }
-        .justified-text {
-        text-align: justify;
-        width: 100%;
-        display: block;
-        }
-         .underline-input {
-        border: none;
-        border-bottom: 3px solid rgb(251, 250, 250);
-        outline: none;
-        width: 150px; /* Adjust width as needed */
-        text-align: center;
-        display: inline-block;
-        }
-        
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.right-align {
+    text-align: right;
+    margin-top: 50px;
+}
+
+.left-align {
+    text-align: right;
+    margin-top: 30px;
+}
+
+p {
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 110px;
+}
+
+.justified-text {
+    text-align: justify;
+    width: 100%;
+    display: block;
+}
+
+.underline-input {
+    border: none;
+    border-bottom: 2px solid black; /* Changed to visible black line */
+    outline: none;
+    width: 200px; /* Adjust width as needed */
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    background-color: transparent;
+}
+
     </style>
 </head>
 <body>
@@ -105,11 +102,16 @@
 
     <p>
         <div style="text-align: justify;">
-            &emsp;&emsp;Be informed that the undersigned personnel of CENRO __________________________  
-            is tasked to monitor the tree cutting operation of __________________________,  
-            ______________________________ as inscribed in the approved  
-            <strong>Tree Cutting Permit No.</strong> __________________.  
-        </div>
+        &emsp;&emsp;Be informed that the undersigned personnel of CENRO 
+        <input type="text" class="underline-input" placeholder="CENRO name">  
+        is tasked to monitor the tree cutting operation of 
+        <input type="text" class="underline-input" placeholder="Name of Permittee">,  
+        <input type="text" class="underline-input" placeholder="Address"> as inscribed in the approved  
+        <strong>Tree Cutting Permit No.</strong> 
+        <input type="text" class="underline-input" placeholder="Enter Permit No">
+        which will expire on
+        <input type="text" class="underline-input" placeholder="Date">.
+    </div>
         
         
     </p>
@@ -130,7 +132,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>1. Does the tree cut correspond to that allowed under the Tree Cutting Permit (TCP)?</td>
+                   <td>
+                    1. Does the tree cut correspond to that allowed under the Tree Cutting Permit (TCP)?<br>
+                     <span style="font-style: italic;">(see attach tree cutting schedule)</span>
+                    </td>
+
                     <td><input type="checkbox" name="q1_yes" value="yes"></td>
                     <td><input type="checkbox" name="q1_no" value="no"></td>
                 </tr>
@@ -152,40 +158,25 @@
             </tr>
             <tr>
                 <tr>
-                    <td>5. Was the implementation made in the presence of the above-mentioned representative?</td>
-                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
-                    <td><input type="checkbox" name="q1_no" value="no"></td>
-                </tr>
-                <tr>
-                    <tr>
                         <td><span style="font-weight: bold; font-style: italic;">Answer the succeeding questions, if applicable:</span></td>
                         <td></td>
                         <td></td>
                     </tr>
                 <tr>
-                    <td>6. Were fees and other charges imposed by existing laws, rules, and regulations paid?</td>
+                    <td>5. Were fees and other charges imposed by existing laws, rules, and regulations paid?</td>
                     <td><input type="checkbox" name="q1_yes" value="yes"></td>
                     <td><input type="checkbox" name="q1_no" value="no"></td>
                 </tr>
                 <tr>
-                    <td>7. In case the wood materials shall be transported, was a transport document issued?</td>
+                    <td>6. In case the wood materials shall be transported, was a transport document issued?</td>
                     <td><input type="checkbox" name="q1_yes" value="yes"></td>
                     <td><input type="checkbox" name="q1_no" value="no"></td>
                 </tr>
                 <tr>
-                    <td>8. Did the permittee undertake measures during and after tree cutting operations to mitigate the negative impacts of the said activity to the locality?</td>
+                    <td>7. Were the trees harvested turned-over to DENR? </td>
                     <td><input type="checkbox" name="q1_yes" value="yes"></td>
                     <td><input type="checkbox" name="q1_no" value="no"></td>
-                </tr>
-                <tr>
-                    <td>9. Is the tree cutting operation covered with a terminal report?</td>
-                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
-                    <td><input type="checkbox" name="q1_no" value="no"></td>
-                </tr>
-                <tr>
-                    <td>10. Is the tree replacement compliant with DENR Memorandum Order No. 2012-02?</td>
-                    <td><input type="checkbox" name="q1_yes" value="yes"></td>
-                    <td><input type="checkbox" name="q1_no" value="no"></td>
+                </tr>                  
                 </tr>
             </tbody>
         </table>
