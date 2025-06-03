@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Cutting Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .schedule-container {
+            width: 355.6mm;
+            min-height: 215.9mm;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10mm;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            background-color: #1a3c34;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .header-info {
+            padding: 10px;
+            background-color: #1a3c34;
+            border-left: 5px solid #0f241f;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 5px;
+            font-size: 12px;
+            align-items: center;
+        }
+
+        .info-section label {
+            font-weight: bold;
+            text-align: right;
+            white-space: nowrap;
+            padding-right: 15px;
+            color: white;
+        }
+
+        .info-section input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            box-shadow: none;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        th {
+            background-color: #d9e6e1;
+            padding: 6px;
+            text-align: left;
+            border: 1px solid #ccc;
+            font-weight: bold;
+        }
+
+        th[colspan="3"], th[colspan="2"] {
+            background-color: #a9cbba;
+            text-align: center;
+        }
+
+        td {
+            padding: 4px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        td input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            box-shadow: none;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        td input[type="checkbox"] {
+            width: 20px;
+            height: 16px;
+            margin: auto;
+            display: block;
+        }
+
+        td input[type="number"] {
+            appearance: textfield;
+            -moz-appearance: textfield;
+            -webkit-appearance: none;
+        }
+
+        td input[type="number"]::-webkit-outer-spin-button,
+        td input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .button-container {
+            margin: 10px 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .add-row-btn, .remove-row-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .add-row-btn {
+            background-color: #1a3c34;
+            color: white;
+        }
+
+        .add-row-btn:hover {
+            background-color: #2d5a4f;
+        }
+
+        .remove-row-btn {
+            background-color: #2d5a4f;
+            color: white;
+        }
+
+        .remove-row-btn:hover {
+            background-color: #c82333;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 10px;
+            line-height: 1;
+            display: none;
+        }
+
+        tr:hover .delete-btn {
+            display: block;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .schedule-container {
+                width: 355.6mm;
+                height: 215.9mm;
+                margin: 0;
+                padding: 10mm;
+                box-shadow: none;
+                border: none;
+            }
+            h1 {
+                background-color: #1a3c34 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .header-info {
+                background-color: #1a3c34 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            th {
+                background-color: #d9e6e1 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            th[colspan="3"], th[colspan="2"] {
+                background-color: #a9cbba !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .button-container, .delete-btn {
+                display: none !important;
+            }
+            @page {
+                size: legal landscape;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="schedule-container">
+        <h1>TREE CUTTING SCHEDULE</h1>
+        <div class="header-info">
+            <div class="info-section">
+                <label>Name of Permittee:</label>
+                <input type="text" value="">
+                <label>TCP No.:</label>
+                <input type="text" value="">
+                <label>Location:</label>
+                <input type="text" value="">
+                <label>Authorized No. of Trees to be cut:</label>
+                <input type="text" value="">
+                <label>Volume (cu.m.):</label>
+                <input type="text" value="">
+                <label>Period of TCP/permit:</label>
+                <input type="text" value="">
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date of TC Operation</th>
+                    <th>Period of TC Permit</th>
+                    <th>CENRO</th>
+                    <th colspan="3">TREE CUT</th>
+                    <th colspan="2">Status</th>
+                    <th>Remarks</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Species</th>
+                    <th>No.</th>
+                    <th>Vol (cu.m)</th>
+                    <th>Complete</th>
+                    <th>Incomplete</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="date">
+                        <button class="delete-btn" onclick="deleteRow(this)" title="Delete row">×</button>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="number"></td>
+                    <td><input type="number" step="0.01"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="date">
+                        <button class="delete-btn" onclick="deleteRow(this)" title="Delete row">×</button>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="number"></td>
+                    <td><input type="number" step="0.01"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="date">
+                        <button class="delete-btn" onclick="deleteRow(this)" title="Delete row">×</button>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="number"></td>
+                    <td><input type="number" step="0.01"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="date">
+                        <button class="delete-btn" onclick="deleteRow(this)" title="Delete row">×</button>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="number"></td>
+                    <td><input type="number" step="0.01"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="date">
+                        <button class="delete-btn" onclick="deleteRow(this)" title="Delete row">×</button>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="number"></td>
+                    <td><input type="number" step="0.01"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="date">
+                        <button class="delete-btn" onclick="deleteRow(this)" title="Delete row">×</button>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="number"></td>
+                    <td><input type="number" step="0.01"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button class="add-row-btn" onclick="addRow()">Add row</button>
+            <button class="remove-row-btn" onclick="removeLastRow()">Remove Last Row</button>
+        </div>
+    </div>
+
+    <script>
+        function addRow() {
+            const tbody = document.querySelector('tbody');
+            const newRow = document.createElement('tr');
+            
+            newRow.innerHTML = `
+                <td>
+                    <input type="date">
+                    <button class="delete-btn" onclick="deleteRow(this)" title="Delete row">×</button>
+                </td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="number"></td>
+                <td><input type="number" step="0.01"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="text"></td>
+            `;
+            
+            tbody.appendChild(newRow);
+        }
+
+        function removeLastRow() {
+            const tbody = document.querySelector('tbody');
+            const rows = tbody.querySelectorAll('tr');
+            
+            if (rows.length > 1) {
+                tbody.removeChild(rows[rows.length - 1]);
+            } else {
+                alert('Cannot remove the last remaining row.');
+            }
+        }
+
+        function deleteRow(button) {
+            const tbody = document.querySelector('tbody');
+            const rows = tbody.querySelectorAll('tr');
+            
+            if (rows.length > 1) {
+                const row = button.closest('tr');
+                row.remove();
+            } else {
+                alert('Cannot delete the last remaining row.');
+            }
+        }
+    </script>
+</body>
+</html>
